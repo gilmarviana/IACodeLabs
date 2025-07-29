@@ -112,19 +112,19 @@ export function ChatInterface() {
   }
 
   return (
-    <Card className="flex h-[calc(100vh-150px)] bg-card shadow-sm overflow-hidden">
+    <Card className="flex h-[calc(100vh-150px)] bg-white shadow-lg rounded-xl border border-[#E5E7EB] overflow-hidden">
       {/* Left Panel: Conversation List */}
-      <div className="w-1/3 border-r border-border bg-muted/50 overflow-y-auto">
-        <CardHeader className="border-b border-border py-4">
-          <CardTitle className="text-lg text-foreground">Conversas</CardTitle>
+      <div className="w-1/3 border-r border-[#E5E7EB] bg-[#F9FAFB] overflow-y-auto">
+        <CardHeader className="border-b border-[#E5E7EB] py-4">
+          <CardTitle className="text-lg text-[#009dc9] font-bold">Conversas</CardTitle>
         </CardHeader>
         <ScrollArea className="h-[calc(100%-70px)]">
           {conversations.map((conv) => (
             <div
               key={conv.id}
               className={cn(
-                "flex items-center gap-3 p-4 cursor-pointer hover:bg-accent transition-colors",
-                selectedConversationId === conv.id && "bg-accent",
+                "flex items-center gap-3 p-4 cursor-pointer hover:bg-[#E5F6FB] transition-colors",
+                selectedConversationId === conv.id && "bg-[#E5F6FB]",
               )}
               onClick={() => handleSelectConversation(conv.id)}
             >
@@ -134,14 +134,14 @@ export function ChatInterface() {
               </Avatar>
               <div className="flex-1">
                 <div className="flex justify-between items-center">
-                  <p className="font-medium text-foreground">{conv.clientName}</p>
+                  <p className="font-semibold text-[#1F2E4F]">{conv.clientName}</p>
                   {conv.unreadCount > 0 && (
-                    <span className="bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    <span className="bg-[#009dc9] text-white text-xs font-bold px-2 py-1 rounded-full">
                       {conv.unreadCount}
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground truncate">{conv.lastMessage}</p>
+                <p className="text-sm text-[#6B7280] opacity-80 truncate">{conv.lastMessage}</p>
               </div>
             </div>
           ))}
@@ -149,13 +149,13 @@ export function ChatInterface() {
       </div>
 
       {/* Right Panel: Chat Area */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 bg-white">
         {selectedConversation ? (
           <>
-            <CardHeader className="border-b border-border py-4">
-              <CardTitle className="text-lg text-foreground">{selectedConversation.clientName}</CardTitle>
+            <CardHeader className="border-b border-[#E5E7EB] py-4">
+              <CardTitle className="text-lg text-[#009dc9] font-bold">{selectedConversation.clientName}</CardTitle>
             </CardHeader>
-            <ScrollArea className="flex-1 p-4 space-y-4">
+            <ScrollArea className="flex-1 p-4 space-y-4 bg-white">
               {selectedConversation.messages.map((message) => (
                 <div
                   key={message.id}
@@ -173,15 +173,15 @@ export function ChatInterface() {
                     className={cn(
                       "max-w-[70%] p-3 rounded-lg",
                       message.sender === "agent"
-                        ? "bg-purple-600 text-white"
-                        : "bg-muted text-foreground border border-border",
+                        ? "bg-[#009dc9] text-white"
+                        : "bg-[#F3F4F6] text-[#1F2E4F] border border-[#E5E7EB]",
                     )}
                   >
                     <p className="text-sm">{message.text}</p>
                     <span
                       className={cn(
                         "text-xs mt-1 block",
-                        message.sender === "agent" ? "text-purple-200" : "text-muted-foreground",
+                        message.sender === "agent" ? "text-[#B6E6F7]" : "text-[#6B7280] opacity-80",
                       )}
                     >
                       {message.timestamp}
@@ -197,11 +197,11 @@ export function ChatInterface() {
               ))}
               <div ref={messagesEndRef} />
             </ScrollArea>
-            <div className="border-t border-border p-4">
+            <div className="border-t border-[#E5E7EB] p-4 bg-white">
               <div className="flex space-x-2">
                 <Input
                   placeholder="Digite sua mensagem..."
-                  className="flex-1 bg-input border-border text-foreground placeholder:text-muted-foreground"
+                  className="flex-1 bg-white border-[#E5E7EB] text-[#1F2E4F] placeholder:text-[#6B7280] opacity-80"
                   value={newMessageText}
                   onChange={(e) => setNewMessageText(e.target.value)}
                   onKeyPress={(e) => {
@@ -210,15 +210,15 @@ export function ChatInterface() {
                     }
                   }}
                 />
-                <Button onClick={handleSendMessage} className="bg-purple-600 hover:bg-purple-700 text-white">
+                <Button onClick={handleSendMessage} className="bg-[#009dc9] hover:bg-[#036b8a] text-white">
                   <Send className="h-4 w-4" />
                 </Button>
               </div>
             </div>
           </>
         ) : (
-          <div className="flex flex-1 items-center justify-center text-muted-foreground">
-            <MessageCircle className="h-12 w-12 mr-2" />
+          <div className="flex flex-1 items-center justify-center text-[#6B7280] opacity-80 bg-white">
+            <MessageCircle className="h-12 w-12 mr-2 text-[#009dc9]" />
             Selecione uma conversa para começar a conversar.
           </div>
         )}

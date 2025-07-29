@@ -1,43 +1,41 @@
-
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import { ProjectsManager } from "@/components/projects-manager"
-import { ProjectsShowcase } from "@/components/projects-showcase"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code, Lightbulb, Rocket, Sun, Moon } from "lucide-react"
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { ProjectsManager } from "@/components/projects-manager";
+import { ProjectsShowcase } from "@/components/projects-showcase";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Code, Lightbulb, Rocket, Sun, Moon } from "lucide-react";
 
 interface LandingPageContent {
-  header_logo_text: string
-  hero_title: string
-  hero_subtitle: string
-  hero_button1_text: string
-  hero_button2_text: string
-  hero_image_url: string
-  hero_gradient_from: string
-  hero_gradient_to: string
-  hero_text_color: string
-  features_title: string
-  feature1_title: string
-  feature1_description: string
-  feature2_title: string
-  feature2_description: string
-  feature3_title: string
-  feature3_description: string
-  about_section_title: string
-  about_us_content: string
-  contact_section_title: string
-  contact_section_description: string
-  contact_button_text: string
-  contact_email: string
-  footer_text: string
+  header_logo_text: string;
+  hero_title: string;
+  hero_subtitle: string;
+  hero_button1_text: string;
+  hero_button2_text: string;
+  hero_image_url: string;
+  hero_gradient_from: string;
+  hero_gradient_to: string;
+  hero_text_color: string;
+  features_title: string;
+  feature1_title: string;
+  feature1_description: string;
+  feature2_title: string;
+  feature2_description: string;
+  feature3_title: string;
+  feature3_description: string;
+  about_section_title: string;
+  about_us_content: string;
+  contact_section_title: string;
+  contact_section_description: string;
+  contact_button_text: string;
+  contact_email: string;
+  footer_text: string;
 }
 
 interface LandingPagePreviewProps {
-  siteContent: LandingPageContent
+  siteContent: LandingPageContent;
 }
-
 export function LandingPagePreview({ siteContent }: LandingPagePreviewProps) {
   const [darkMode, setDarkMode] = useState(false);
   const [activeHash, setActiveHash] = useState("");
@@ -206,20 +204,20 @@ export function LandingPagePreview({ siteContent }: LandingPagePreviewProps) {
             <Button className="mt-8 bg-[#FFFFFF] px-8 py-3 text-lg font-semibold text-[#009FCC] hover:bg-[#00BFFF]">
               <Link href={`mailto:${siteContent.contact_email}`}>{siteContent.contact_button_text}</Link>
             </Button>
-            {/* Formulário de contato */}
-            <form className="mt-12 max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8 text-left" style={{color:'#131C2E'}} onSubmit={e => e.preventDefault()}>
+            {/* Formulário de contato simples */}
+            <form className="mt-12 max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8 text-left" style={{color:'#131C2E'}}>
               <h3 className="text-2xl font-bold mb-6 text-center">Envie uma mensagem</h3>
               <div className="mb-4">
-                <label htmlFor="nome" className="block mb-2 font-semibold">Nome</label>
-                <input id="nome" name="nome" type="text" required className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
+                <label className="block mb-2 font-semibold text-[#009dc9]">Nome</label>
+                <input name="name" required className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block mb-2 font-semibold">Email</label>
-                <input id="email" name="email" type="email" required className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
+                <label className="block mb-2 font-semibold text-[#009dc9]">Email</label>
+                <input name="email" type="email" required className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
               </div>
               <div className="mb-4">
-                <label htmlFor="mensagem" className="block mb-2 font-semibold">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows={4} required className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
+                <label className="block mb-2 font-semibold text-[#009dc9]">Mensagem</label>
+                <textarea name="message" required rows={4} className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#009FCC] bg-white border-[#009FCC]" />
               </div>
               <button type="submit" className="w-full bg-[#009FCC] text-white font-semibold py-3 rounded hover:bg-[#00BFFF] transition-colors">Enviar</button>
             </form>
